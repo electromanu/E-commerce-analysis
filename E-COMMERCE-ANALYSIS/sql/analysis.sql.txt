@@ -1,0 +1,73 @@
+-- ==========================================
+-- E-Commerce Sales Analysis
+-- ==========================================
+
+-- 1. Total orders
+SELECT COUNT(*)
+FROM list_of_orders;
+
+
+-- 2. Unique customers
+SELECT COUNT(DISTINCT customer_name)
+FROM list_of_orders;
+
+
+-- 3. Top 10 customers by number of orders
+SELECT
+    customer_name,
+    COUNT(*) AS order_count
+FROM list_of_orders
+GROUP BY customer_name
+ORDER BY order_count DESC
+LIMIT 10;
+
+
+-- 4. Monthly sales and profit
+SELECT
+    TO_CHAR(order_date, 'YYYY') AS year,
+    TO_CHAR(order_date, 'MM') AS month,
+    SUM(amount) AS sales,
+    SUM(profit) AS profit
+FROM list_of_orders lo
+JOIN order_details od
+    ON lo.order_id = od.order_id
+GROUP BY
+    TO_CHAR(order_date, 'YYYY'),
+    TO_CHAR(order_date, 'MM')
+ORDER BY
+    year,
+    month;
+
+
+-- 5. Sales by category
+SELECT
+    category AS CATEGORY,
+    amount AS SALES
+FROM order_details
+GROUP BY category;
+
+
+-- 6. Profit by category
+SELECT
+    category AS CATEGORY,
+    profit AS PROFIT
+FROM order_details
+GROUP BY category;
+
+
+-- 7. Sales by state
+SELECT
+    state AS STATE,
+    amount AS SALES
+FROM order_details od INNER JOIN list_of_orders ls
+ON od.order_id=ls.order_id
+GROUP BY state;
+
+
+-- 8. Profit by state
+SELECT
+    state AS STATE,
+    profit AS PROFIT
+FROM order_details od INNER JOIN list_of_orders ls
+ON od.order_id=ls.order_id
+GROUP BY state;
