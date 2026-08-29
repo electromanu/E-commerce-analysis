@@ -51,6 +51,9 @@ SQL was used to:
 
 The dashboard contains:
 
+<img width="1338" height="756" alt="dashboard" src="https://github.com/user-attachments/assets/d96d8d74-7457-40f8-b96c-9e0b871c2389" />
+
+
 - Total Sales
 - Total Profit
 - Total Customers
