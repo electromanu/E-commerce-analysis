@@ -11,7 +11,6 @@ customer activity, and regional performance.
 ## Tools Used
 
 - PostgreSQL
-- SQL
 - Power BI
 - GitHub
 
